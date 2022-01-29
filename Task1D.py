@@ -14,7 +14,17 @@ def rivers_with_station(stations):
 
     return (rivers_list)
 
-print(rivers_with_station(stations))
+rivers_list = rivers_with_station(stations)
+print(len(rivers_list))
+
+alphabetical_rivers_list = []
+alphabetical_rivers_list.insert(0, rivers_list[0])
+for  i in range (1,len(rivers_list)):
+    n = 0
+    while n < len(alphabetical_rivers_list) and alphabetical_rivers_list[n] < rivers_list[i]:
+        n = n + 1
+    alphabetical_rivers_list.insert(n, rivers_list[i])
+print(alphabetical_rivers_list[:10])
 
 
-def stations_by_river(stations):
+#def stations_by_river(stations): #create a dictionary mapping river to station
