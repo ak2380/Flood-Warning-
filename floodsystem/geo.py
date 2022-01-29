@@ -8,8 +8,6 @@ from floodsystem.utils import sorted_by_key  # noqa
 from haversine import haversine, Unit
 from floodsystem.stationdata import build_station_list
 
-stations = build_station_list()
-
 def stations_by_distance(stations, p):
     "sort stations by increasing distance from the coordinate p"
 
@@ -24,8 +22,6 @@ def stations_by_distance(stations, p):
 
 
 def stations_within_radius(stations, centre, r):
-    "returns the stations in a given radius of a given point in alphabetical order"
-
     stations_within_radius_list = []
 
     for station in stations:
