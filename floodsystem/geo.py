@@ -5,7 +5,6 @@
 geographical data."""
 
 from floodsystem.utils import sorted_by_key  # noqa
-import math
 from haversine import haversine, Unit
 from floodsystem.stationdata import build_station_list
 
@@ -25,7 +24,6 @@ def stations_by_distance(stations, p):
 
 
 print(stations_by_distance(stations, (52.2053, 0.1218)))
-
 
 def stations_within_radius(stations, centre, r):
     stations_within_radius_list = []
