@@ -15,5 +15,3 @@ def stations_by_distance(stations, p):
     sorted_by_key(stations_distance, 2)
 
     return stations_distance
-
-print(stations_by_distance(stations, (52.2053, 0.1218)))
