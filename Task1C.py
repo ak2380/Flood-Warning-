@@ -1,12 +1,3 @@
-# Copyright (C) 2018 Garth N. Wells
-#
-# SPDX-License-Identifier: MIT
-"""This module contains a collection of functions related to
-geographical data.
-
-"""
-
-from .utils import sorted_by_key  # noqa
 import math
 from haversine import haversine
 
@@ -28,3 +19,9 @@ def stations_within_radius(stations, centre, r):
 
     return (alphabetical_stations_within_radius_list)
 
+
+from floodsystem.stationdata import build_station_list
+# Build list of stations
+stations = build_station_list()
+
+print (stations_within_radius(stations, (52.2053, 0.1218), 10))
