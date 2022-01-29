@@ -12,7 +12,7 @@ def stations_by_distance(stations, p):
     for station in stations:
         stations_distance += (station.name, station.town, haversine(station.coord, p))
 
-    stations_distance = sorted_by_key(stations_distance, 2)
+    stations_distance = sorted_by_key(stations_distance, 2, reverse=False)
 
     return stations_distance
 
