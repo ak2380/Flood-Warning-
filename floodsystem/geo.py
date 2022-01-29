@@ -22,8 +22,6 @@ def stations_by_distance(stations, p):
 
     return stations_distance
 
-print(stations_by_distance(stations, (52.2053, 0.1218)))
-
 
 def stations_within_radius(stations, centre, r):
     "returns the stations in a given radius of a given point in alphabetical order"
