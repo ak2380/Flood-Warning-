@@ -32,16 +32,21 @@ def stations_by_river(stations):
     #key -> item
     station_river_dict = {}
     rivers_list = []
+    temp_stations_list = []
 
     for station in stations:
         # Insert river names keys into dictionary
         if station.river not in rivers_list:
             station_river_dict[station.river] = []
             rivers_list.append(station.river)
-        
-    for station in stations:
-        # Insert station names list items into dictionary
-        station_river_dict[station.river] = station_river_dict[station.river].append(station.name)
+
+    for i in range (0,len(rivers_list)):
+    # Insert station names list items into dictionary     
+        for station in stations:
+            if rivers_list[i] == station.river:
+                temp_stations_list.append(station.name)
+        station_river_dict[rivers_list[i]] = temp_stations_list
+        temp_stations_list = []
 
     return(station_river_dict)
 
