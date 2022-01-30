@@ -13,7 +13,11 @@ def test_1C():
 
     stations = build_station_list()
 
-    assert stations_within_radius(stations,(52.2053, 0.1218), 10) == stations_within_radius(stations,(52.2053, 0.1218), 10).sort()
+    assert sorted(stations_within_radius(stations, (52.2053, 0.1218), 10)) == stations_within_radius(stations, (52.2053, 0.1218), 10)
+
+def test_1D():
+
+    stations
 
 def test_1E():
 
@@ -21,3 +25,7 @@ def test_1E():
 
     assert type(rivers_by_station_number(stations,N=9)) == list #testing that a list is the output
     assert rivers_by_station_number(stations,N=9)[0][0] == 'River Thames' #verifying that River Thames is the closest river
+
+test_1B()
+test_1C()
+test_1E()
