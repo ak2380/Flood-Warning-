@@ -27,5 +27,22 @@ for  i in range (1,len(rivers_list)):
 print(alphabetical_rivers_list[:10]) #prints first 10 rivers alphabetically
 
 
-def stations_by_river(stations): #create a dictionary mapping river to station
-    river 
+def stations_by_river(stations):
+    #create a dictionary mapping that maps river names (the ‘key’) to a list of station objects on a given river
+    #key -> item
+    station_river_dict = {}
+    rivers_list = []
+
+    for station in stations:
+        # Insert river names keys into dictionary
+        if station.river not in rivers_list:
+            station_river_dict[station.river] = []
+            rivers_list.append(station.river)
+        
+    for station in stations:
+        # Insert station names list items into dictionary
+        station_river_dict[station.river] = station_river_dict[station.river].append(station.name)
+
+    return(station_river_dict)
+
+print(stations_by_river(stations))
