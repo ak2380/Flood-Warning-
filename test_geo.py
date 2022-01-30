@@ -1,4 +1,4 @@
-from floodsystem.geo import stations_by_distance, rivers_by_station_number, stations_within_radius
+from floodsystem.geo import rivers_with_station, stations_by_river, stations_by_distance, rivers_by_station_number, stations_within_radius
 from floodsystem.stationdata import build_station_list
 
 def test_1B():
@@ -17,7 +17,12 @@ def test_1C():
 
 def test_1D():
 
-    stations
+    stations = build_station_list()
+    assert type(rivers_with_station(stations)) == list #testing that a list is the output
+    assert len(rivers_with_station(stations)) == 950
+
+    assert type(stations_by_river(stations)) == dict
+    assert len(stations_by_river(stations)['River Thames']) == 55
 
 def test_1E():
 
@@ -28,4 +33,5 @@ def test_1E():
 
 test_1B()
 test_1C()
+test_1D()
 test_1E()
