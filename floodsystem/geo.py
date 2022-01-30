@@ -7,6 +7,7 @@ geographical data."""
 from floodsystem.utils import sorted_by_key  # noqa
 from haversine import haversine, Unit
 from floodsystem.stationdata import build_station_list
+from collections import Counter
 
 def stations_by_distance(stations, p):
     "sort stations by increasing distance from the coordinate p"
@@ -35,4 +36,23 @@ def stations_within_radius(stations, centre, r):
         alphabetical_stations_within_radius_list.insert(n, stations_within_radius_list[i])
 
     return (alphabetical_stations_within_radius_list)
+
+
+def rivers_by_station_number(stations,N):
+    "creates a list of N rivers with the most monitoring stations"
+    rivers_list = []
+
+    for station in stations:
+        rivers_list.append(station.river)
+
+    rivers_list.sort()
+
+    rivcount = dict(Counter(rivers_list))
+
+    rivlist = []
+
+    for station,number in rivcount.items():
+        rivlist.append((station,number))
+
+    return sorted_by_key(rivlist,1,reverse=True)[:N]
 
