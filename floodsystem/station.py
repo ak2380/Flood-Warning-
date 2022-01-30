@@ -39,4 +39,4 @@ class MonitoringStation:
         d += "   typical range: {}".format(self.typical_range)
         return d
 
-    def typical_range_consistent(self):
+    #def typical_range_consistent(self):

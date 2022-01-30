@@ -65,8 +65,6 @@ def rivers_with_station(stations):
         if station.river not in rivers_list: # if name is not already in list, add it to list
             rivers_list.append(station.river)
 
-    rivers_list = rivers_with_station(stations)
-
     alphabetical_rivers_list = []
     alphabetical_rivers_list.insert(0, rivers_list[0])
     for  i in range (1,len(rivers_list)):
@@ -96,7 +94,7 @@ def stations_by_river(stations):
         for station in stations:
             if rivers_list[i] == station.river:
                 temp_stations_list.append(station.name)
-        station_river_dict[rivers_list[i]] = temp_stations_list
+        station_river_dict[rivers_list[i]] = sorted(temp_stations_list)
         temp_stations_list = []
 
     return(station_river_dict)
