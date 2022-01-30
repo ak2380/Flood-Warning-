@@ -38,7 +38,6 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
-<<<<<<< HEAD
     def test(self): #test
         return(self.typical_range)
 
@@ -66,5 +65,3 @@ def inconsistent_typical_range_stations(stations):
 def test(stations):
     for station in stations:
         return(MonitoringStation.typical_range_consistent(station))
-=======
->>>>>>> b9acd34c5b7da3f1481b2793193d91b212e304d8
