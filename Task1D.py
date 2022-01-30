@@ -5,7 +5,8 @@ from floodsystem.geo import stations_by_river
 # Build list of stations
 stations = build_station_list()
 
-print(len(rivers_with_station(stations)))
-print(rivers_with_station(stations)[:10])
+print(str(len(rivers_with_station(stations))) + " stations. First 10 - " + str(rivers_with_station(stations)[:10]))
 
-print(stations_by_river(stations))
+print(stations_by_river(stations)["River Aire"])
+print(stations_by_river(stations)["River Cam"])
+print(stations_by_river(stations)["River Thames"])
