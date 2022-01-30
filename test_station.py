@@ -30,15 +30,16 @@ def test_create_monitoring_station():
 
 def test_1F():
 
-    stations = build_station_list
+    stations = build_station_list()
 
     assert type(inconsistent_typical_range_stations(stations)) == list #testing that a list is the output
     test_list = []
     for station in stations:
-        if station.typical_range != None or station.typical_range[0] > station.typical_range[1]:
+        if station.typical_range != None:
+            if station.typical_range[0] > station.typical_range[1]:
+                test_list.append(station.name)
+        elif station.typical_range == None:
             test_list.append(station.name)
     assert sorted(test_list) == inconsistent_typical_range_stations(stations) 
-    print(sorted(test_list))
-    print(inconsistent_typical_range_stations(stations))
 
 test_1F()
