@@ -40,19 +40,6 @@ class MonitoringStation:
         return d
 
     def typical_range_consistent(self): #Task 1F a
-        # the range is said to be inconsistent if:
-        # (i) no data is available; or 
-        # (ii) the reported typical high range is less than the reported typical low
-
-        #consistent = True
-        #if self.typical_range[1] <= self.typical_range[0]: #satisfying ii
-        #    consistent = False
-        
-        #if len(self.typical_range) != 2: #satisfying i
-        #    consistent = False
-
-        #return consistent
-
         if self.typical_range != None:
             lower = float(self.typical_range[0])
             upper = float(self.typical_range[1])
@@ -60,7 +47,7 @@ class MonitoringStation:
                 return True
         return False
 
-def inconsistent_typical_range_stations(stations):
+def inconsistent_typical_range_stations(stations): #Task 1F b
     inconsistent_stations_list = []
     for station in stations:
         if station.typical_range_consistent() == False:
