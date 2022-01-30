@@ -40,5 +40,3 @@ class MonitoringStation:
         return d
 
     def typical_range_consistent(self):
-
-        
