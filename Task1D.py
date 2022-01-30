@@ -24,7 +24,8 @@ for  i in range (1,len(rivers_list)):
     while n < len(alphabetical_rivers_list) and alphabetical_rivers_list[n] < rivers_list[i]:
         n = n + 1
     alphabetical_rivers_list.insert(n, rivers_list[i])
-print(alphabetical_rivers_list[:10])
+print(alphabetical_rivers_list[:10]) #prints first 10 rivers alphabetically
 
 
-#def stations_by_river(stations): #create a dictionary mapping river to station
+def stations_by_river(stations): #create a dictionary mapping river to station
+    river 
