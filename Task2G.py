@@ -8,13 +8,10 @@ import matplotlib
 import numpy as np
 
 #rating risk at ‘severe’, ‘high’, ‘moderate’ or ‘low’
-
 #water level at a station rising/falling is assessed by taking derivatives
 #consider how many "ranges" the current water level is above the normal average water level.
 
-# risk categories:
 predicted_rise_stations = []
-severe_stations = []
 
 # Define n number of most at risk stations
 n = 20
@@ -68,15 +65,24 @@ for station in high_level_stations:
     d2_weighting = 0.1
 
     risk = (rel_rise * rel_rise_weighting) + (current_d *  d_weighting) + (current_d2 *  d2_weighting)
-
-    stations
-    if rel_rise > 0: #i.e. water level is rising
-        predicted_rise_stations.append([station.name, rel_rise])
-        print("Station at risk: " + str(station.name))
-        print("Relative current water level: " + str(rel_current_level))
-        print("Relative predicted water level: " + str(rel_predicted_level))
-        print("Rise in relative water levels: " + str(rel_rise))
-        print("Current rate of rise (First derivative): " + str(current_d))
-        print("Current rate of rise in rate of rise (Second derivative): " + str(current_d2))
-        print("Weighted risk: " + str(risk))
-        print("")
+    
+    #sorting calculated risk into set risk boundaries
+    if risk <= 10:
+        category = "Low"
+    elif risk > 10 and risk <= 30:
+        category = "Moderate"
+    elif risk > 30 and risk <= 60:
+        category = "High"
+    elif risk > 60:
+        category = "Severe"
+    
+    predicted_rise_stations.append([station.name, risk])
+    print("Station at risk: " + str(station.name))
+    print("Relative current water level: " + str(rel_current_level))
+    print("Relative predicted water level: " + str(rel_predicted_level))
+    print("Rise in relative water levels: " + str(rel_rise))
+    print("Current rate of rise (First derivative): " + str(current_d))
+    print("Current rate of rise in rate of rise (Second derivative): " + str(current_d2))
+    print("Weighted risk: " + str(risk))
+    print("Risk Category: " + category)
+    print("")
