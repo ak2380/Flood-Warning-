@@ -11,7 +11,7 @@ import numpy as np
 #water level at a station rising/falling is assessed by taking derivatives
 #consider how many "ranges" the current water level is above the normal average water level.
 
-predicted_rise_stations = []
+predicted_rise_towns = []
 
 # Define n number of most at risk stations
 n = 20
@@ -76,8 +76,10 @@ for station in high_level_stations:
     elif risk > 60:
         category = "Severe"
     
-    predicted_rise_stations.append([station.name, risk])
-    print("Station at risk: " + str(station.name))
+    predicted_rise_towns.append([station.town, risk])
+    
+    print("Town at risk: " + str(station.town))
+    print("Monitoring Station: " + str(station.name))
     print("Relative current water level: " + str(rel_current_level))
     print("Relative predicted water level: " + str(rel_predicted_level))
     print("Rise in relative water levels: " + str(rel_rise))
