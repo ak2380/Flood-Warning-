@@ -22,12 +22,13 @@ dt = 2
 # polynomial order 4
 p = 4
 
-most_at_risk_stations = stations_highest_rel_level(stations, N)
+high_level_stations = stations_highest_rel_level(stations, N)
 
 # risk categories:
+predicted_rise_stations = []
 severe_stations = []
 
-for station in most_at_risk_stations:
+for station in high_level_stations:
     dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days = dt))
 
     poly, shift = polyfit(dates, levels, p)
@@ -36,8 +37,18 @@ for station in most_at_risk_stations:
     # get the end plot data point
     current = max(x - shift)
 
-    # predict the water level tomorrow by subbing into polynomial
+    # predict the actual water level tomorrow by subbing into polynomial
     prediction = poly(current + 1)
 
-    water_level = station.relative_water_level()
-    
+    rel_current_level = station.relative_water_level()
+    rel_predicted_level = (prediction - station.typical_range[0]) / (station.typical_range[1] - station.typical_range[0])
+
+
+    rel_rise = rel_predicted_level - rel_current_level
+
+    if rel_rise > 0: #i.e. water level is rising
+        predicted_rise_stations.append([station.name, rel_rise])
+        print("Station at risk: " + str(station.name))
+        print("Relative current water level: " + str(rel_current_level))
+        print("Relative predicted water level: " + str(rel_predicted_level))
+        print("Rise in relative water levels: " + str(rel_rise))
