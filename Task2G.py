@@ -15,21 +15,22 @@ stations = build_station_list()
 update_water_levels(stations)
 
 # Define N number of most at risk stations
-N = 20
+n = 20
 
-# 2 day time interval
-dt = 2
-# polynomial order 4
-p = 4
-
-high_level_stations = stations_highest_rel_level(stations, N)
+high_level_stations = stations_highest_rel_level(stations, n)
 
 # risk categories:
 predicted_rise_stations = []
 severe_stations = []
 
 for station in high_level_stations:
-    dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days = dt))
+
+    # 2 day time interval
+    dt = 2
+    # polynomial order 4
+    p = 4
+
+    dates, levels = fetch_measure_levels(station.measure_id, dt = datetime.timedelta(days = dt))
 
     poly, shift = polyfit(dates, levels, p)
     x = matplotlib.dates.date2num(dates)
