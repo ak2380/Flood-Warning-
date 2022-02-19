@@ -54,9 +54,11 @@ for station in high_level_stations:
     rel_predicted_level = (prediction - station.typical_range[0]) / (station.typical_range[1] - station.typical_range[0])
     rel_rise = rel_predicted_level - rel_current_level
 
+    #differentiate computed polynomial
     d_poly = poly.deriv()
     d2_poly = poly.deriv(2)
 
+    #evaluate derivatives at current time
     current_d = d_poly(current_time)
     current_d2 = d2_poly(current_time)
 
@@ -67,13 +69,14 @@ for station in high_level_stations:
 
     risk = (rel_rise * rel_rise_weighting) + (current_d *  d_weighting) + (current_d2 *  d2_weighting)
 
+    stations
     if rel_rise > 0: #i.e. water level is rising
         predicted_rise_stations.append([station.name, rel_rise])
         print("Station at risk: " + str(station.name))
         print("Relative current water level: " + str(rel_current_level))
         print("Relative predicted water level: " + str(rel_predicted_level))
         print("Rise in relative water levels: " + str(rel_rise))
-        print("Current rate of rise (First derivative) " + str(rel_rise))
-        print("Current rate of rise in rate of rise (Second derivative) " + str(rel_rise))
+        print("Current rate of rise (First derivative): " + str(current_d))
+        print("Current rate of rise in rate of rise (Second derivative): " + str(current_d2))
         print("Weighted risk: " + str(risk))
         print("")
