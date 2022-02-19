@@ -1,5 +1,8 @@
 import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib
 from datetime import datetime, timedelta
+from floodsystem.analysis import polyfit
 
 def plot_water_levels(station, dates, levels):
 
@@ -34,6 +37,7 @@ def plot_water_level_with_fit(station, dates, levels, p):
     plt.plot(dates, levels, '.')
 
     # Plot polynomial fit at 30 points along interval (note that polynomial is evaluated using the shift x)
+    x = matplotlib.dates.date2num(dates)
     x1 = np.linspace(x[0], x[-1], 30)
     plt.plot(x1, poly(x1 - shift))
 
@@ -47,4 +51,5 @@ def plot_water_level_with_fit(station, dates, levels, p):
     plt.title("{}".format(station.name))
 
     # Display plot
+    plt.tight_layout()
     plt.show()
