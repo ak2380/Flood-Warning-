@@ -19,7 +19,7 @@ station_five = [station for station in stations if station.name in stationlist]
 
 for station in station_five:
 
-    dt = 10
+    dt = 2
     p = 4
 
     dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))

@@ -41,7 +41,7 @@ def plot_water_level_with_fit(station, dates, levels, p):
     x1 = np.linspace(x[0], x[-1], 30)
     plt.plot(x1, poly(x1 - shift))
 
-    # Plot max and min ranges
+    # Plot typical range lows/highs
     plt.plot([min(dates),max(dates)], [station.typical_range[0], station.typical_range[0]])
     plt.plot([min(dates),max(dates)], [station.typical_range[1], station.typical_range[1]])
 
