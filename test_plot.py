@@ -1,14 +1,27 @@
 from floodsystem.stationdata import build_station_list, update_water_levels
+from floodsystem.datafetcher import fetch_measure_levels
+from floodsystem.plot import plot_water_level_with_fit
 
+import datetime
+import numpy as np
+import random
 
 from floodsystem.plot import plot_water_levels
 
-def test_2E():
 
-    stations = build_station_list
+def test_plot_water_level_with_fit():
+    p = 4
+    stations = build_station_list()
     update_water_levels(stations)
-    
-    for station in stations:
 
+    # choose random stations to generate plots for and visually inspect
 
-test_2E()
+    for N in [random.randint(1,100), random.randint(1,100), random.randint(1,100)]:
+        station = stations[N]
+        dt = 10
+        dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
+        plot_water_level_with_fit(station, dates, levels, p)
+
+test_plot_water_level_with_fit()
+
+#test_2E()
